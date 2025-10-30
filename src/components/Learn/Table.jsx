@@ -24,7 +24,8 @@ const Table=({content})=> {
                       </thead>
                       <tbody className="text-xl" >
                         {
-                          content.person.map((details, index2) => (
+                          // content.person &&
+                           content.person.map((details, index2) => (
         
                             <tr key={index2} className=" border-b-1  border-gray-400 rounded-xl text-gray-600 " >
                               <td className=" pt-9 pb-3">{details.id}</td>

@@ -66,17 +66,17 @@ const Content = () => {
         {/* content cardtable */}
 
 
-        
+
 
 
         <div className="border bg-white rounded-xl p-5  ">
           <div>
             <h1 className="text-2xl font-semibold">{json.content1}</h1>
-                    <h1 className="text-gray-500 text-lg mt-1 mb-2">{json.content2}</h1>
-                    <h1 className="text-lg font-bold">{json.content3}</h1>
+            <h1 className="text-gray-500 text-lg mt-1 mb-2">{json.content2}</h1>
+            <h1 className="text-lg font-bold">{json.content3}</h1>
           </div>
 
-         <Table content={json.table}/>
+          <Table content={json.table} />
 
           <div className="" >
             <h1 className="font-bold mt-3 mb-3">
@@ -131,7 +131,7 @@ const Content = () => {
 
                   <div >
                     {
-                      cardinfo.multicont.map((innerinfo, index5) => ( 
+                      cardinfo.multicont.map((innerinfo, index5) => (
                         <div key={index5} className="bg-blue-100 p-5 rounded-xl border-l-7 border-blue-500  inset-shadow-sm inset-shadow-black/60  text-gray-500 " >
                           <ul className="list-disc list-inside">
                             <li>{innerinfo.word1}</li>
@@ -145,24 +145,23 @@ const Content = () => {
                       ))
                     }
                   </div>
-
-                  <div>
-                    {
-
-                    }
-                    </div>
-
-
- <Table content={json.contcard1[0].table1}/>
-
-
-                    
+                </div>
+                <div>
+                  {
+                    (Array.isArray(cardinfo.table1) ? cardinfo.table1 : [cardinfo.table1]).map(
+                      (conttable, index6) => (
+                        <div key={index6}>
+                          <Table content={conttable} />
+                        </div>
+                      )
+                    )
+                  }
                 </div>
 
               </div>
             ))
           }
-         
+
 
         </div>
 

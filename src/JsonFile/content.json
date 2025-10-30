@@ -12,7 +12,9 @@
     "content1": "Input Datasets",
     "content2": "Here are the tables we'll be working with:",
     "content3": "Table:Bookings",
-    
+
+
+
     "table": {
         "head1": "user_id",
         "head2": "user_name",
@@ -76,6 +78,8 @@
 
 
 
+
+
     "contcard1": [
         {
             "ïd": "1",
@@ -92,29 +96,28 @@
                     "word5": "If negative, treat as zero spare in the final step."
                 }
             ],
+
+
+
             "subtitle2": "Output Visulaization",
             "tablebody": "spare",
 
-            "table": "1",
 
+
+
+            "table": "1",
             "table1": {
-                "head1": "user_id",
-                "head2": "user_name",
-                "head3": "loyalty_tier",
-                "head4": "boooking_time",
-                "head5": "rn",
+                "head1": "spare",
+                
+                
                 "person": [
-                    {
-                        "id": "u_s1",
-                        "userid": " Arun ",
-                        "loyaltier": "3",
-                        "booktime": " 2025-10-24 07:00:00",
-                        "class": "1"
-                    }
-                    
+                    {"id": "1"}
                 ]
             }
         },
+
+
+
         {
             "ïd": "2",
             "title": "Rank Standard passengers by priority",
@@ -132,42 +135,47 @@
             ],
              "subtitle2": "Output Visulaization",
 
-             "table1": {
+
+             "table1":
+                 {
                 "head1": "user_id",
                 "head2": "user_name",
                 "head3": "loyalty_tier",
+                "head4": "boooking_time",
+                "head5": "rn",
                 
                 "person": [
                     {
                         "id": "u_s1",
-                        "userid": " Arun ",
+                        "username": " Arun ",
                         "loyaltier": "3",
                         "booktime": " 2025-10-24 07:00:00",
                         "class": "1"
                     },
                     {
                         "id": "u_s2",
-                        "userid": "Bhav ",
+                        "username": "Bhav ",
                         "loyaltier": "2",
                         "booktime": "2025-10-24 08:00:00",
                         "class": "2"
                     },
                     {
                         "id": "u_s3",
-                        "userid": "Divya ",
+                        "username": "Divya ",
                         "loyaltier": "2",
                         "booktime": "2025-10-24 08:00:00",
                         "class": "3"
                     },
                     {
                         "id": "u_s4",
-                        "userid": "Chirag ",
+                        "username": "Chirag ",
                         "loyaltier": "2",
                         "booktime": "2025-10-24 08:00:00",
                         "class": "4"
                     }
                 ]
             }
+        
         }
     ]
 }
