@@ -11,9 +11,9 @@ function App() {
 
   return (
     <>
-    <div className=' max-w-3/4 mx-auto'>
+    <div className=' lg:max-w-7xl sm:w-full  mx-auto'>
     <Routes>
-      <Route path='/Learn' element={<Content/>}/>
+      <Route path='/' element={<Content/>}/>
     </Routes>
     </div>
     </>

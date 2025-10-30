@@ -1,5 +1,6 @@
 import React from "react"
 import json from "../../JsonFile/content.json"
+import Table from "./Table"
 
 const Content = () => {
 
@@ -17,13 +18,16 @@ const Content = () => {
 
   return (
     <>
-      <div className="grid gap-5">
+      <div className="grid gap-5 kumbh-sans-font">
+
         {/* content HEAD */}
+
+
         <div className=" w-full ">
-          <div className="text-center text-5xl  font-semibold">
+          <div className="text-center text-5xl mx-auto lg:w-170 font-semibold">
             <h1>{json.title}</h1>
           </div>
-          <div className="text-3xl text-center py-10 text-pink-400">
+          <div className="text-2xl text-center py-10 text-pink-400">
             <h1>{json.subtitle1}</h1>
             <h1>{json.subtitle2}</h1>
           </div>
@@ -57,42 +61,45 @@ const Content = () => {
           </div>
         </div>
 
+
+
         {/* content cardtable */}
 
-        <div className="border bg-white ">
-          <h1>Input Datasets</h1>
-          <h1>Here are the tables we'll be working with:</h1>
-          <h1>Table:Bookings</h1>
+
+        <Table/>
 
 
-          <div className="p-5" >
-            <table className="w-full ">
-              <thead className=" bg-blue-300 text-white p-2">
-               
-                    <tr  >
-                      <th className="" >{heading.first}</th>
-                      <th >{heading.second}</th>
-                      <th >{heading.third}</th>
-                      <th >{heading.four}</th>
-                      <th >{heading.five}</th>
-                    </tr>
-                 
+        {/* <div className="border bg-white rounded-xl p-5  ">
+          <div>
+            <h1 className="text-2xl font-semibold">Input Datasets</h1>
+            <h1 className="text-gray-500 text-lg mt-1 mb-2">Here are the tables we'll be working with:</h1>
+            <h1 className="text-lg font-bold">Table:Bookings</h1>
+          </div>
+
+          <div className="mt-2  text-center rounded-xl " >
+            <table className="w-full  rounded-xl ">
+              <thead className=" bg-blue-200  text-black  ">
+
+                <tr className="text-2xl">
+                  <th className="p-5  rounded-tl-2xl rounded-bl-2xl font-small " >user_id</th>
+                  <th >user_name</th>
+                  <th >loyalty_tier</th>
+                  <th >boooking_time</th>
+                  <th className="rounded-tr-2xl rounded-br-2xl ">class</th>
+                </tr>
+
               </thead>
-              <tbody>
+              <tbody className="text-xl" >
                 {
                   json.person.map((details, index2) => (
 
-                    <tr key={index2} className="border border-gray-400 rounded-xl " >
-                      <td className="p-6">{details.id}</td>
-                      <td>{details.userid}</td>
-                      <td>{details.loyaltier}</td>
-                      <td>{details.booktime}</td>
-                      <td>{details.class}</td>
-
-
+                    <tr key={index2} className=" border-b-1  border-gray-400 rounded-xl text-gray-600 " >
+                      <td className=" pt-9 pb-3">{details.id}</td>
+                      <td className=" pt-9 pb-3">{details.userid}</td>
+                      <td className=" pt-9 pb-3">{details.loyaltier}</td>
+                      <td className=" pt-9 pb-3">{details.booktime}</td>
+                      <td className=" pt-9 pb-3">{details.class}</td>
                     </tr>
-
-
                   ))
                 }
 
@@ -100,7 +107,82 @@ const Content = () => {
             </table>
           </div>
 
+          <div className="" >
+            <h1 className="font-bold mt-3 mb-3">
+              Table: train_capacity
+            </h1>
+            <table className="w-full">
+              <thead className=" bg-blue-200  text-black  ">
+                <tr className="text-2xl">
+                  <th className="p-5  rounded-tl-2xl rounded-bl-2xl font-small " >Premium_total</th>
+                  <th className="p-5  rounded-tr-2xl rounded-br-2xl font-small " >Premium_expected_noshow</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className=" border-b-1  border-gray-400 rounded-xl text-gray-600 text-center " >
+                  <td className=" pt-9 pb-3">{json.pretotal}</td>
+                  <td className=" pt-9 pb-3">{json.preexpecte}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div> */}
+
+
+        {/* card4 ->1 */}
+
+
+        <div className=" grid gap-6" >
+          {
+            json.contcard1.map((cardinfo, index4) => (
+              <div key={index4} className="bg-white border border-gray-200 rounded-xl">
+
+
+                {/* heading */}
+                <div className="bg-blue-500 p-8 text-2xl text-white">
+                  <h1>{cardinfo.title}</h1>
+                </div>
+
+
+                {/* content */}
+
+                <div className="p-5 grid gap-3">
+                  <h1 className=" font-semibold">{cardinfo.subtitle}</h1>
+
+                  {/* code */}
+
+                  <div className="bg-black/70 text-white p-3 rounded-xl">
+                    <h1 style={{ whiteSpace: "pre-line" }}>{cardinfo.code}</h1>
+                  </div>
+
+
+
+                  <div >
+                    {
+                      cardinfo.multicont.map((innerinfo, index5) => ( 
+                        <div key={index5} className="bg-blue-100 p-5 rounded-xl border-l-7 border-blue-500  inset-shadow-sm inset-shadow-black/60  text-gray-500 " >
+                          <ul className="list-disc list-inside">
+                            <li>{innerinfo.word1}</li>
+                            <li>{innerinfo.word2}</li>
+                            <li>{innerinfo.word3}</li>
+                            <li>{innerinfo.word4}</li>
+                            <li>{innerinfo.word5}</li>
+                          </ul>
+
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+
+              </div>
+            ))
+          }
+
         </div>
+
+
 
 
 
