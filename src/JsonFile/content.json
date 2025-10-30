@@ -6,62 +6,73 @@
     "cardcontent": "A weekend train has limited Premium seats. Some Premium passengers may no-show. Your task: upgrade Standard passengers to Premium only if spare Premium seats exist after subtracting expected no-shows. Prioritize by higher loyalty_tier first, then earlier booking_time. Output each passenger's final_class and a clear reason (\"auto-upgrade\", \"kept-standard\", \"already-premium\").",
     "card2head": "Detective in Crime Scene - SQL Clues",
     "card2content": "To solve this mystery you need to know these SQL concepts:",
-    "person": [
-        {
-            "id": "1",
-            "userid": " Priya ",
-            "loyaltier": "3",
-            "booktime": " 2025-10-24 08:00:00",
-            "class": "premium"
-        },
-        {
-            "id": "2",
-            "userid": "Rahul ",
-            "loyaltier": "2",
-            "booktime": "2025-10-24 09:00:00",
-            "class": "premium"
-        },
-        {
-            "id": "3",
-            "userid": "Meera ",
-            "loyaltier": "1",
-            "booktime": "2025-10-24 10:00:00",
-            "class": "premium"
-        },
-        {
-            "id": "4",
-            "userid": "Arun ",
-            "loyaltier": "3",
-            "booktime": "2025-10-24 07:00:00",
-            "class": "Standard"
-        },
-        {
-            "id": "5",
-            "userid": "Bhav ",
-            "loyaltier": "2",
-            "booktime": "2025-10-24 08:00:00",
-            "class": "Standard"
-        },
-        {
-            "id": "6",
-            "userid": "Chirag ",
-            "loyaltier": "2",
-            "booktime": "2025-10-24 08:00:00",
-            "class": "Standard"
-        },
-        {
-            "id": "7",
-            "userid": "Divya ",
-            "loyaltier": "2",
-            "booktime": "2025-10-24 08:00:00",
-            "class": "Standard"
-        }
-    ],
+
+
+
+    "content1": "Input Datasets",
+    "content2": "Here are the tables we'll be working with:",
+    "content3": "Table:Bookings",
+    
+    "table": {
+        "head1": "user_id",
+        "head2": "user_name",
+        "head3": "loyalty_tier",
+        "head4": "boooking_time",
+        "head5": "rn",
+        "person": [
+            {
+                "id": "1",
+                "userid": " Priya ",
+                "loyaltier": "3",
+                "booktime": " 2025-10-24 08:00:00",
+                "class": "premium"
+            },
+            {
+                "id": "2",
+                "username": "Rahul ",
+                "loyaltier": "2",
+                "booktime": "2025-10-24 09:00:00",
+                "class": "premium"
+            },
+            {
+                "id": "3",
+                "username": "Meera ",
+                "loyaltier": "1",
+                "booktime": "2025-10-24 10:00:00",
+                "class": "premium"
+            },
+            {
+                "id": "4",
+                "username": "Arun ",
+                "loyaltier": "3",
+                "booktime": "2025-10-24 07:00:00",
+                "class": "Standard"
+            },
+            {
+                "id": "5",
+                "username": "Bhav ",
+                "loyaltier": "2",
+                "booktime": "2025-10-24 08:00:00",
+                "class": "Standard"
+            },
+            {
+                "id": "6",
+                "username": "Chirag ",
+                "loyaltier": "2",
+                "booktime": "2025-10-24 08:00:00",
+                "class": "Standard"
+            },
+            {
+                "id": "7",
+                "username": "Divya ",
+                "loyaltier": "2",
+                "booktime": "2025-10-24 08:00:00",
+                "class": "Standard"
+            }
+        ]
+    },
     "pretotal": "5",
     "preexpecte": "1",
-
-
-
 
 
 
@@ -81,26 +92,82 @@
                     "word5": "If negative, treat as zero spare in the final step."
                 }
             ],
+            "subtitle2": "Output Visulaization",
+            "tablebody": "spare",
 
-            "subtitle2":"Output Visulaization",
-            "tablebody":"spare",
-            "table":"1"
+            "table": "1",
+
+            "table1": {
+                "head1": "user_id",
+                "head2": "user_name",
+                "head3": "loyalty_tier",
+                "head4": "boooking_time",
+                "head5": "rn",
+                "person": [
+                    {
+                        "id": "u_s1",
+                        "userid": " Arun ",
+                        "loyaltier": "3",
+                        "booktime": " 2025-10-24 07:00:00",
+                        "class": "1"
+                    }
+                    
+                ]
+            }
         },
         {
             "ïd": "2",
-            "title": "Compute usable Premium spare seats.Without additional context",
+            "title": "Rank Standard passengers by priority",
             "subtitle": "SQL Query",
-            "code": "SELECT premium_total - premium_expected_noshow \n - (SELECT COUNT(*) FROM bookings WHERE class='Premium') AS spare \n FROM train_capacity;",
+            "code": "SELECT user_id, user_name, loyalty_tier, booking_time,\n ROW_NUMBER() OVER (ORDER BY loyalty_tier DESC, booking_time ASC) AS rn \nFROM bookings\nWHERE class='Standard'\nORDER BY rn;",
             "multicont": [
                 {
                     "id": "1",
-                    "word1": "We start with premium_total seats.",
-                    "word2": "Subtract premium_expected_noshow to be conservative (reserve for those likely absent).",
-                    "word3": "Subtract currently booked Premium to know how many we can upgrade into.",
-                    "word4": "The result spare is the maximum upgrades available.",
-                    "word5": "If negative, treat as zero spare in the final step."
+                    "word1": "We need a fair order to pick upgrades.",
+                    "word2": "ROW_NUMBER() gives a unique rank per Standard passenger.",
+                    "word3": "Sort by higher loyalty_tier first, then earlier booking_time.",
+                    "word4": "rn=1 is the first to receive an upgrade if spare exists.",
+                    "word5": "This is simple and interview-friendly."
                 }
-            ]
+            ],
+             "subtitle2": "Output Visulaization",
+
+             "table1": {
+                "head1": "user_id",
+                "head2": "user_name",
+                "head3": "loyalty_tier",
+                
+                "person": [
+                    {
+                        "id": "u_s1",
+                        "userid": " Arun ",
+                        "loyaltier": "3",
+                        "booktime": " 2025-10-24 07:00:00",
+                        "class": "1"
+                    },
+                    {
+                        "id": "u_s2",
+                        "userid": "Bhav ",
+                        "loyaltier": "2",
+                        "booktime": "2025-10-24 08:00:00",
+                        "class": "2"
+                    },
+                    {
+                        "id": "u_s3",
+                        "userid": "Divya ",
+                        "loyaltier": "2",
+                        "booktime": "2025-10-24 08:00:00",
+                        "class": "3"
+                    },
+                    {
+                        "id": "u_s4",
+                        "userid": "Chirag ",
+                        "loyaltier": "2",
+                        "booktime": "2025-10-24 08:00:00",
+                        "class": "4"
+                    }
+                ]
+            }
         }
     ]
 }
