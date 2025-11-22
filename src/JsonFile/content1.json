@@ -1,0 +1,115 @@
+{
+    "title": "Learn SQL with Step-by-Step Visual Execution",
+    "subtitle1": "Master the fundamentals of SQL — from basics to advanced concepts.",
+    "subtitle2": "Learn interactively, visualize data, and grow your real-world skills step by step.",
+    "cardhead": "The Problem",
+    "cardcontent": "Ananya works as a junior data analyst at EduTrack University. She’s been assigned to prepare a report card summary from the students table. But she noticed that some students are from the same department, and her mentor asked her to calculate average marks by department instead of listing every student. She remembered hearing about a magical SQL word — GROUP BY — that can help summarize data. Let’s see how Ananya learns to use it! ",
+    "content1": "Input Datasets",
+    "content2": "Here are the tables we'll be working with:",
+    "content3": "Table:Bookings",
+
+
+    "table1": {
+        "head1": "student_id",
+        "head2": "name",
+        "head3": "department",
+        "head4": "marks",
+        
+        "person": [
+            {
+                "id": "1",
+                "username": " Rahul ",
+                "loyaltier": "Science",
+                "booktime": " 85"
+                
+            },
+            {
+                "id": "2",
+                "username": "Priya ",
+                "loyaltier": "Commerce",
+                "booktime": "90"
+            },
+            {
+                "id": "3",
+                "username": "Kiran ",
+                "loyaltier": "Arts",
+                "booktime": "78"
+            },
+            {
+                "id": "4",
+                "username": "Sneha ",
+                "loyaltier": "Science",
+                "booktime": "92"
+            },
+            {
+                "id": "5",
+                "username": "Ramesh ",
+                "loyaltier": "Commerce",
+                "booktime": "88"
+            },
+            {
+                "id": "6",
+                "username": "Neha ",
+                "loyaltier": "Arts",
+                "booktime": "81"
+            }
+        ]
+    },
+
+     "card2head": "Step by Step Solution",
+    "card2content": "Before giving the answer, the code will be examined slowly and clearly, covering every part in a structured sequence.",
+
+"table2": {
+        "head1": "student_id",
+        "head2": "name",
+        "head3": "department",
+        "head4": "marks",
+
+        "icons":"icon",
+        "title":"View the Raw Data",
+        "code":"SELECT*FROM students;",
+        "output":"output",
+        
+        "person": [
+            {
+                "id": "1",
+                "username": " Rahul ",
+                "loyaltier": "Science",
+                "booktime": " 85"
+                
+            },
+            {
+                "id": "2",
+                "username": "Priya ",
+                "loyaltier": "Commerce",
+                "booktime": "90"
+            },
+            {
+                "id": "3",
+                "username": "Kiran ",
+                "loyaltier": "Arts",
+                "booktime": "78"
+            },
+            {
+                "id": "4",
+                "username": "Sneha ",
+                "loyaltier": "Science",
+                "booktime": "92"
+            },
+            {
+                "id": "5",
+                "username": "Ramesh ",
+                "loyaltier": "Commerce",
+                "booktime": "88"
+            },
+            {
+                "id": "6",
+                "username": "Neha ",
+                "loyaltier": "Arts",
+                "booktime": "81"
+            }
+        ]
+    }
+    
+ 
+}

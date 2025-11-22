@@ -1,53 +1,86 @@
-import React from 'react'
-// import content from "../../JsonFile/content.json"
+import React, { useState } from 'react';
 
-const Table=({content})=> {
+const Table = ({ content }) => {
+  const [activeButton, setActiveButton] = useState("tablebox1");
+
+  const tableBox = ["tablebox1", "tablebox2", "tablebox3"].filter(
+    (tablebox) => content[tablebox]
+  );
+
+  const activeTableData =
+    activeButton === "tablebox1"
+      ? content.person1 || content.person
+      : activeButton === "tablebox2"
+      ? content.person2
+      : activeButton === "tablebox3"
+      ? content.person3
+      : [];
+
   return (
-    <div>
-      
-  
-                  
-        {/* table */}
-                  <div className="mt-2  text-center rounded-xl " >
-                    <table className="w-full  rounded-xl ">
-                      <thead className=" bg-blue-200  text-black  ">
-        
-                        <tr className="text-2xl">
-                          <th className="p-5  rounded-tl-2xl rounded-bl-2xl font-small " >
-                               {content.head1}</th>
-                          <th >{content.head2}</th>
-                          <th >{content.head3}</th>
-                          <th >{content.head4}</th>
-                          <th className="rounded-tr-2xl rounded-br-2xl ">{content.head5}</th>
-                        </tr>
-        
-                      </thead>
-                      <tbody className="text-xl" >
-                        {
-                          // content.person &&
-                           content.person.map((details, index2) => (
-        
-                            <tr key={index2} className=" border-b-1  border-gray-400 rounded-xl text-gray-600 " >
-                              <td className=" pt-9 pb-3">{details.id}</td>
-                              <td className=" pt-9 pb-3">{details.username}</td>
-                              <td className=" pt-9 pb-3">{details.loyaltier}</td>
-                              <td className=" pt-9 pb-3">{details.booktime}</td>
-                              <td className=" pt-9 pb-3">{details.class}</td>
-                            </tr>
-                          ))
-                        }
-        
-                      </tbody>
-                    </table>
-                  </div>
-        
-                 
-        
-                </div>
+    <div className="mt-4 text-center rounded-xl">
+      {/* ====== Table Tabs ====== */}
+      <div className="flex gap-3 ">
+        {tableBox.map((tablebox, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveButton(tablebox)}
+            className={`p-3 text-xl rounded-tl-xl rounded-tr-xl transition-all duration-200 ${
+              activeButton === tablebox
+                ? "bg-blue-600 text-white shadow-md"
+                : "bg-blue-400 text-white hover:bg-blue-500"
+            }`}
+          >
+            {content[tablebox]}
+          </button>
+        ))}
+      </div>
+
+      {activeButton === "tablebox2" && (
+        <div>
+          <h1>helooooo</h1>
+        </div>
+      )}
+      {activeButton === "tablebox3" && (
+        <div>
+          <h1>new Expected</h1>
+        </div>
+      )}
+
+      {/* ====== Table Content ====== */}
+      <div className="">
+      {activeButton !== "tablebox2" && (
+        <table className="w-full rounded-xl">
+          <thead className="bg-blue-200 text-black">
+            <tr className="text-2xl">
+              <th className="p-5 font-small">{content.head1}</th>
+              <th>{content.head2}</th>
+              <th>{content.head3}</th>
+              <th>{content.head4}</th>
+              <th>{content.head5}</th>
+            </tr>
+          </thead>
+
+          <tbody className="text-xl">
+            {activeTableData?.map((details, index2) => (
+              <tr
+                key={index2}
+                className="border-b border-gray-400 rounded-xl text-gray-600"
+              >
+                <td className="pt-9 pb-3">{details.id}</td>
+                <td className="pt-9 pb-3">{details.username}</td>
+                <td className="pt-9 pb-3">{details.loyaltier}</td>
+                <td className="pt-9 pb-3">{details.booktime}</td>
+                <td className="pt-9 pb-3">{details.class}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
 
-    
-  )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Table
+export default Table;
